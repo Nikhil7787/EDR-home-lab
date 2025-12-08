@@ -1,6 +1,6 @@
 # 🛡️ EDR Home Lab
 
-## 📖 Executive Summary
+### 📖 Executive Summary
 This project simulated a real-world cyberattack scenario to test **Endpoint Detection & Response (EDR)** capabilities. I deployed **LimaCharlie EDR** on a Windows 10 endpoint, acted as the adversary using **Sliver C2** (Command & Control) to compromise the machine, and performed incident response to identify the threat.
 
 **Role:** Security Analyst / Detection Engineer
@@ -8,7 +8,7 @@ This project simulated a real-world cyberattack scenario to test **Endpoint Dete
 
 ---
 
-## 🏗️ Lab Architecture
+### 🏗️ Lab Architecture
 * **Attacker Node:** Kali Linux (Sliver C2 Server) - IP: `10.68.167.225`
 * **Victim Node:** Windows 10 Pro (Endpoint) - IP: `10.68.167.38`
 * **Telemetry:** LimaCharlie EDR sensor installed on the victim.
@@ -16,17 +16,26 @@ This project simulated a real-world cyberattack scenario to test **Endpoint Dete
 
 ---
 
-## ⚔️ Phase 1: The Attack (Red Team)
-### I generated a custom C2 payload using the Sliver framework. Upon execution by the victim, a persistent C2 session was established, granting me remote shell access.
+### ⚔️ Phase 1: The Attack (Red Team)
+<img width="857" height="390" alt="image" src="https://github.com/user-attachments/assets/7540e6fb-c78b-446a-88f3-16b39fdefa09" />
 
-<img width="857" height="390" alt="image" src="https://github.com/user-attachments/assets/d45454ec-fb8d-48ad-8296-28673e772d0e" />
+## **1. Payload Generation**
+
+I configured the payload to communicate back to my specific attack station using mutual TLS (mTLS) for encryption.
+
+<img width="872" height="337" alt="image" src="https://github.com/user-attachments/assets/56ac851e-e104-4db6-b6ea-57efafe8b79a" />
+
+## **2. Execution & Compromise**
+The payload was delivered via a temporary Python web server. Upon execution by the victim, a persistent C2 session was established, granting me remote shell access.
+
+<img width="868" height="351" alt="image" src="https://github.com/user-attachments/assets/8e5cd9f1-f21c-4fcf-affe-db6c287ac649" />
 
 
 ---
 
-## 🛡️ Phase 2: Detection & Response (Blue Team)
+### 🛡️ Phase 2: Detection & Response (Blue Team)
 
-### **1. Sensor Deployment**
+## **1. Sensor Deployment**
  I installed the LimaCharlie EDR sensor on the victim endpoint to establish real-time telemetry.
 
 <img width="841" height="481" alt="image" src="https://github.com/user-attachments/assets/d40b60c2-0ab2-49a0-90a8-26b5147f74d6" />
